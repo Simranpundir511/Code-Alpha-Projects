@@ -56,7 +56,7 @@ while(game_over==False):
      elif(lives==0):
         game_over=True
         print("You loose")
-        print(f"The letter was {chosen_word}")
+        print(f"The word was {chosen_word}")
 
 
 
