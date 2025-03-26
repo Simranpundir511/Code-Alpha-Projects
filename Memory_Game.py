@@ -2,29 +2,27 @@ import pygame
 import random
 import time
 
-# Initialize pygame
 pygame.init()
 
-# Game Constants
 WIDTH, HEIGHT = 600, 600
 GRID_SIZE = 4
 CARD_SIZE = WIDTH // GRID_SIZE
 
-# Generate number pairs
+
 numbers = list(range(1, (GRID_SIZE * GRID_SIZE // 2) + 1)) * 2
 random.shuffle(numbers)
 board = [numbers[i * GRID_SIZE:(i + 1) * GRID_SIZE] for i in range(GRID_SIZE)]
 
-# Colors
+
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (50, 150, 255)
 
-# Fonts
+
 font = pygame.font.Font(None, 80)
 timer_font = pygame.font.Font(None, 40)
 
-# Create screen
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Memory Card Game")
 
@@ -37,15 +35,13 @@ def draw_card(x, y, num, revealed, matched):
         text = font.render(str(num), True, BLACK)
         screen.blit(text, (x * CARD_SIZE + CARD_SIZE // 3, y * CARD_SIZE + CARD_SIZE // 4))
 
-# Card state tracking
 revealed = [[False] * GRID_SIZE for _ in range(GRID_SIZE)]
 selected = []
 matched = [[False] * GRID_SIZE for _ in range(GRID_SIZE)]
 
-# Timer
 start_time = time.time()
 
-# Game loop
+
 running = True
 while running:
     screen.fill(WHITE)
@@ -69,7 +65,7 @@ while running:
     
     pygame.display.flip()
     
-    # Check for a match
+  
     if len(selected) == 2:
         pygame.time.delay(500)  # Pause for 0.5 seconds to show the second card
         x1, y1 = selected[0]
